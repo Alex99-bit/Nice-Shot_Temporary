@@ -35,9 +35,4 @@ public enum GameStates
     inGame,
     pause,
     gameOver,
-
-    // Now some states for the mini games
-    carsRC,
-    snowShot,
-    boatRace
 }
