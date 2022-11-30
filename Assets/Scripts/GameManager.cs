@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Pos de momento no podré usar el new input system, en una actualización lo implementaré
     }
 }
 
