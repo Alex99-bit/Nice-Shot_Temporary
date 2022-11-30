@@ -45,21 +45,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetMainMenu()
+    {
+        SetNewGameState(GameStates.start);
+    }
+
     void SetNewGameState(GameStates newGameState)
     {
         switch (newGameState)
         {
             case GameStates.start:
-
+                Time.timeScale = 0;
                 break;
             case GameStates.inGame:
-
+                Time.timeScale = 1;
                 break;
             case GameStates.pause:
-                
+                Time.timeScale = 0;              
                 break;
             case GameStates.gameOver:
-
+                Time.timeScale = 0;
                 break;
             default:
                 // Lanza un error pero la vdd no veo en que panorama podría lanzarlo
