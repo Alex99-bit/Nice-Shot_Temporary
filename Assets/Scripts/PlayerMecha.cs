@@ -15,6 +15,9 @@ public class PlayerMecha : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(GameManager.sharedInstance.currentGameState == GameStates.inGame)
+        {
+
+        }   
     }
 }
