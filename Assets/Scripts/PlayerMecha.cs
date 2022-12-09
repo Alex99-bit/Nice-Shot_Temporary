@@ -8,7 +8,8 @@ public class PlayerMecha : MonoBehaviour
     Rigidbody2D playerRB;
     AnimaPlayer playerAnim;
     public float speed;
-    public int life, bullets;
+    public int life, bullets, auxLife, auxBullets;
+    public float auxTime;
 
     private void Awake()
     {
@@ -38,6 +39,11 @@ public class PlayerMecha : MonoBehaviour
         }
 
         playerAnim = AnimaPlayer.idle;
+
+        auxTime = 0;
+
+        auxLife = life;
+        auxBullets = bullets;
     }
 
     // Update is called once per frame
@@ -55,6 +61,8 @@ public class PlayerMecha : MonoBehaviour
                 life = 0;
                 Dead();
             }
+
+            // Aqui van las animaciones
         }   
     }
 
@@ -121,8 +129,14 @@ public class PlayerMecha : MonoBehaviour
 
     void Dead()
     {
+        
         playerAnim = AnimaPlayer.dead;
-        GameManager.sharedInstance.currentGameState = GameStates.gameOver;
+
+        auxTime = Time.deltaTime;
+        if (auxTime >= 10)
+        {
+            GameManager.sharedInstance.currentGameState = GameStates.gameOver;
+        }
     }
 }
 

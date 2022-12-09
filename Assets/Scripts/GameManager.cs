@@ -10,10 +10,11 @@ public class GameManager : MonoBehaviour
     public GameStates currentGameState;
     public static GameManager sharedInstance;
     public int score;
+    // El timer puede usarse como temporizador o cronometro, falta definir
     public float timer;
 
     // Estos elementos son los que se mostraran en la interfaz
-    public TextMeshProUGUI vida, puntaje, balas;
+    public TextMeshProUGUI vida, puntaje, balas, timeWatch;
     public GameObject startScreen, gameOver, inGame, pause;
 
     private void Awake()
@@ -64,6 +65,8 @@ public class GameManager : MonoBehaviour
         {
             case GameStates.start:
                 Time.timeScale = 0;
+                // Se establecen todas las variables que se tengan que establecer o restaurar
+                PlayerMecha.instance.auxTime = 0;
                 break;
             case GameStates.inGame:
                 Time.timeScale = 1;
