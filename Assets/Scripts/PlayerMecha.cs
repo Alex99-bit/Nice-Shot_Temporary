@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class PlayerMecha : MonoBehaviour
 {
+    public static PlayerMecha instance;
     Rigidbody2D playerRB;
     AnimaPlayer playerAnim;
     public float speed;
-    public int life;
+    public int life, bullets;
+
+    private void Awake()
+    {
+        // creando una instancia compartida en caso de que se requiera
+        if (instance == null)
+            instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +32,11 @@ public class PlayerMecha : MonoBehaviour
             life = 3;
         }
 
+        if(bullets == 0)
+        {
+            bullets = 6;
+        }
+
         playerAnim = AnimaPlayer.idle;
     }
 
@@ -35,6 +48,13 @@ public class PlayerMecha : MonoBehaviour
             Movement();
             Apunta();
             Dispara();
+
+            // En caso de que la vida quede en cero, pasa lo que tiene que pasar x_x
+            if (life <= 0)
+            {
+                life = 0;
+                Dead();
+            }
         }   
     }
 
@@ -97,6 +117,12 @@ public class PlayerMecha : MonoBehaviour
     {
         // Dispara y crea la animacion
 
+    }
+
+    void Dead()
+    {
+        playerAnim = AnimaPlayer.dead;
+        GameManager.sharedInstance.currentGameState = GameStates.gameOver;
     }
 }
 

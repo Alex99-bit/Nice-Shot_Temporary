@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
     // In here we can manage every state in game
     public GameStates currentGameState;
     public static GameManager sharedInstance;
+    public int score;
+    public float timer;
+
+    // Estos elementos son los que se mostraran en la interfaz
+    public TextMeshProUGUI vida, puntaje, balas;
+    public GameObject startScreen, gameOver, inGame, pause;
 
     private void Awake()
     {
