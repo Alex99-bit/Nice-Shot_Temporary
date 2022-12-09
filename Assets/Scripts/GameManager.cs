@@ -76,6 +76,10 @@ public class GameManager : MonoBehaviour
         {
             case GameStates.start:
                 Time.timeScale = 0;
+                startScreen.SetActive(true);
+                inGame.SetActive(false);
+                pause.SetActive(false);
+                gameOver.SetActive(false);
 
                 // Se establecen todas las variables que se tengan que establecer o restaurar
                 PlayerMecha.instance.auxTime = 0;
@@ -86,14 +90,26 @@ public class GameManager : MonoBehaviour
 
             case GameStates.inGame:
                 Time.timeScale = 1;
+                startScreen.SetActive(false);
+                inGame.SetActive(true);
+                pause.SetActive(false);
+                gameOver.SetActive(false);
                 break;
 
             case GameStates.pause:
-                Time.timeScale = 0;              
+                Time.timeScale = 0;
+                startScreen.SetActive(false);
+                inGame.SetActive(false);
+                pause.SetActive(true);
+                gameOver.SetActive(false);
                 break;
 
             case GameStates.gameOver:
                 Time.timeScale = 0;
+                startScreen.SetActive(false);
+                inGame.SetActive(false);
+                pause.SetActive(false);
+                gameOver.SetActive(true);
                 break;
 
             default:
