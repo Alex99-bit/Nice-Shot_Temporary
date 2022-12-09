@@ -29,12 +29,18 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 0;
+        startScreen.SetActive(true);
+        gameOver.SetActive(false);
+        inGame.SetActive(false);
+        pause.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         // Pos de momento no podré usar el new input system, en una actualización lo implementaré
+
+        
 
         if(currentGameState == GameStates.inGame)
         {
@@ -52,6 +58,11 @@ public class GameManager : MonoBehaviour
                 currentGameState = GameStates.inGame;
             }
         }
+
+        vida.text = "Life: " + PlayerMecha.instance.life;
+        puntaje.text = "Score: " + score;
+        balas.text = "Ammo: " + PlayerMecha.instance.bullets;
+        timeWatch.text = "Timer: " + timer;
     }
 
     public void SetMainMenu()
