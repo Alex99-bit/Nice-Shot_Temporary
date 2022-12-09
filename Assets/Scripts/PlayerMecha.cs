@@ -7,7 +7,7 @@ public class PlayerMecha : MonoBehaviour
     public static PlayerMecha instance;
     Rigidbody2D playerRB;
     AnimaPlayer playerAnim;
-    public float speed;
+    public float speed, auxSpeed; 
     public int life, bullets, auxLife, auxBullets;
     public float auxTime;
 
@@ -44,6 +44,7 @@ public class PlayerMecha : MonoBehaviour
 
         auxLife = life;
         auxBullets = bullets;
+        auxSpeed = speed;
     }
 
     // Update is called once per frame
@@ -124,7 +125,10 @@ public class PlayerMecha : MonoBehaviour
     void Dispara()
     {
         // Dispara y crea la animacion
-
+        if (Input.GetButtonDown("Fire1"))
+        {
+            playerAnim = AnimaPlayer.fire;
+        }
     }
 
     void Dead()

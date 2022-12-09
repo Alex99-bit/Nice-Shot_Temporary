@@ -65,18 +65,26 @@ public class GameManager : MonoBehaviour
         {
             case GameStates.start:
                 Time.timeScale = 0;
+
                 // Se establecen todas las variables que se tengan que establecer o restaurar
                 PlayerMecha.instance.auxTime = 0;
+                PlayerMecha.instance.life = PlayerMecha.instance.auxLife;
+                PlayerMecha.instance.bullets = PlayerMecha.instance.auxBullets;
+                PlayerMecha.instance.speed = PlayerMecha.instance.auxSpeed;
                 break;
+
             case GameStates.inGame:
                 Time.timeScale = 1;
                 break;
+
             case GameStates.pause:
                 Time.timeScale = 0;              
                 break;
+
             case GameStates.gameOver:
                 Time.timeScale = 0;
                 break;
+
             default:
                 // Lanza un error pero la vdd no veo en que panorama podría lanzarlo
                 Debug.Log(">> No se deberia estar mostrando este texto: Revisa el metodo SetNewGameState()");
