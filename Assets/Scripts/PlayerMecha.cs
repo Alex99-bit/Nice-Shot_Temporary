@@ -6,10 +6,11 @@ public class PlayerMecha : MonoBehaviour
 {
     public static PlayerMecha instance;
     Rigidbody2D playerRB;
-    AnimaPlayer playerAnim;
+    Animator animator;
     public float speed, auxSpeed; 
     public int life, bullets, auxLife, auxBullets;
     public float auxTime;
+    const string IS_RUNNING = "isRunning", IS_FIRE = "isFire";
 
     private void Awake()
     {
@@ -38,7 +39,7 @@ public class PlayerMecha : MonoBehaviour
             bullets = 6;
         }
 
-        playerAnim = AnimaPlayer.idle;
+        //playerAnim = AnimaPlayer.idle;
 
         auxTime = 0;
 
@@ -78,41 +79,15 @@ public class PlayerMecha : MonoBehaviour
         // Movimiento del jugador y sus animaciones
         playerRB.velocity = new Vector2(moveX, moveY) * speed;
 
-        // Animaciones respecto al movimiento en X u Horizontalmente
-        if (moveX > 0)
+        if(moveX != 0 || moveY != 0)
         {
-            // Va hacia la derecha
-            playerAnim = AnimaPlayer.run;
+            // Animacion de correr
+            animator.SetBool(IS_RUNNING, true);
         }
-        else if (moveX < 0)
+        else
         {
-            // Va hacia la izquierda
-            playerAnim = AnimaPlayer.run;
-        }
-        else if(moveX == 0)
-        {
-            // Se queda en el idle
-            playerAnim = AnimaPlayer.idle;
-        }
-
-        // Animaciones respecto al movimiento en Y o Verticalmente
-        if (moveY > 0)
-        {
-            // Se mueve hacia arriba
-            playerAnim = AnimaPlayer.run;
-
-        }
-        else if (moveY < 0)
-        {
-            // Se mueve hacia abajo
-            playerAnim = AnimaPlayer.run;
-
-        }
-        else if (moveY == 0)
-        {
-            // Se queda en idle
-            playerAnim = AnimaPlayer.idle;
-
+            // Para la animacion de correr
+            animator.SetBool(IS_RUNNING, false);
         }
     }
 
@@ -127,14 +102,14 @@ public class PlayerMecha : MonoBehaviour
         // Dispara y crea la animacion
         if (Input.GetButtonDown("Fire1"))
         {
-            playerAnim = AnimaPlayer.fire;
+            //playerAnim = AnimaPlayer.fire;
         }
     }
 
     void Dead()
     {
         
-        playerAnim = AnimaPlayer.dead;
+        //playerAnim = AnimaPlayer.dead;
 
         auxTime = Time.deltaTime;
         if (auxTime >= 10)
@@ -142,12 +117,4 @@ public class PlayerMecha : MonoBehaviour
             GameManager.sharedInstance.currentGameState = GameStates.gameOver;
         }
     }
-}
-
-public enum AnimaPlayer
-{
-    idle,
-    run,
-    fire,
-    dead
 }
