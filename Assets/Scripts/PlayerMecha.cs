@@ -22,6 +22,7 @@ public class PlayerMecha : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody2D>();
 
         if(speed == 0)

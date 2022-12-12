@@ -40,15 +40,16 @@ public class GameManager : MonoBehaviour
     {
         // Pos de momento no podré usar el new input system, en una actualización lo implementaré
 
-        
-
-        if(currentGameState == GameStates.inGame)
+        if (currentGameState == GameStates.inGame)
         {
-            if(Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 // pausa
                 currentGameState = GameStates.pause;
             }
+
+            timer = (timer + Time.deltaTime);
+            //print(timer);
         }
         else if (currentGameState == GameStates.pause)
         {
@@ -60,9 +61,9 @@ public class GameManager : MonoBehaviour
         }
 
         vida.text = "Life: " + PlayerMecha.instance.life;
-        puntaje.text = "Score: " + score;
+        puntaje.text = "$" + score;
         balas.text = "Ammo: " + PlayerMecha.instance.bullets;
-        timeWatch.text = "Timer: " + timer;
+        timeWatch.text = "Timer: " + timer.ToString("F0");
     }
 
     public void SetMainMenu()
