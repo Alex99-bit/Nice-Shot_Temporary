@@ -70,6 +70,16 @@ public class GameManager : MonoBehaviour
         SetNewGameState(GameStates.start);
     }
 
+    public void StartGame()
+    {
+        SetNewGameState(GameStates.inGame);
+    }
+
+    public void SetExitApp()
+    {
+        Application.Quit();
+    }
+
     void SetNewGameState(GameStates newGameState)
     {
         switch (newGameState)
