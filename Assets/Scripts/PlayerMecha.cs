@@ -12,6 +12,8 @@ public class PlayerMecha : MonoBehaviour
     public float auxTime;
     const string IS_RUNNING = "isRunning", IS_FIRE = "isFire";
 
+    public Transform target;
+
     private void Awake()
     {
         // creando una instancia compartida en caso de que se requiera
@@ -24,6 +26,11 @@ public class PlayerMecha : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody2D>();
+
+        if(target == null)
+        {
+            target = this.transform;
+        }
 
         if(speed == 0)
         {
@@ -67,6 +74,11 @@ public class PlayerMecha : MonoBehaviour
 
             // Aqui van las animaciones
         }   
+
+        Vector3 mouseWP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWP.z = 0;
+
+        Vector3 lookAtDir = mouseWP - target.position;
     }
 
     void Movement()

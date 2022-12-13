@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     // Estos elementos son los que se mostraran en la interfaz
     public TextMeshProUGUI vida, puntaje, balas, timeWatch;
-    public GameObject startScreen, gameOver, inGame, pause;
+    public GameObject startScreen, gameOver, inGame, pause, player;
 
     private void Awake()
     {
