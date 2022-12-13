@@ -2028,7 +2028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4259043517487985403, guid: 986856f25b84d9c4f8b0e4c33a2f32b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4259043517487985403, guid: 986856f25b84d9c4f8b0e4c33a2f32b5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2071,6 +2071,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1173929494006572014, guid: 77753c2e67277784ab233331b6d05d97, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1712111185}
     - target: {fileID: 1272242221105994201, guid: 77753c2e67277784ab233331b6d05d97, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2256,6 +2260,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528988936}
   m_CullTransparentMesh: 1
+--- !u!4 &1712111185 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1272242221105994201, guid: 77753c2e67277784ab233331b6d05d97, type: 3}
+  m_PrefabInstance: {fileID: 1366370787}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1843350205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2605,7 +2614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 801925852227327054, guid: cfe1466be2514f643b003836757132cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 801925852227327054, guid: cfe1466be2514f643b003836757132cc, type: 3}
       propertyPath: m_LocalPosition.z

@@ -71,14 +71,13 @@ public class PlayerMecha : MonoBehaviour
                 life = 0;
                 Dead();
             }
-
-            // Aqui van las animaciones
         }   
 
         Vector3 mouseWP = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWP.z = 0;
 
         Vector3 lookAtDir = mouseWP - target.position;
+        target.right = lookAtDir;
     }
 
     void Movement()

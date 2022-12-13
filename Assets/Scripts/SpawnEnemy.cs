@@ -19,6 +19,7 @@ public class SpawnEnemy : MonoBehaviour
         //i = 0;
         rigidSpawn = GetComponent<Rigidbody2D>();
         cambioLado = false;
+        StartCoroutine(spawnEnemys());
 
         if(spawnType == TypeOf.typeA)
         {
