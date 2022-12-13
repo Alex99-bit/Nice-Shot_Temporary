@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
+    // Esta clase es para los prefabs de balas
     Rigidbody2D bulletRb;
+    public TypeOfBullet bulletType;
     public float speed;
     int pos;
     public Transform playerT;
@@ -24,13 +26,38 @@ public class BulletMovement : MonoBehaviour
     {
         bulletRb = GetComponent<Rigidbody2D>();
 
-        bulletRb.velocity = new Vector2() * speed;
+
 
         Destroy(gameObject, 1);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if(bulletType == TypeOfBullet.bulletPlayer)
+        {
+            // Checa si la bala la disparo el player
+            // para tomar la trayectoria de este
+            if (collision.gameObject.CompareTag("enemy"))
+            {
+                // En caso de que la bala que disparo el player choque con un enemigo
+                
+            }
+        }
+        else if(bulletType == TypeOfBullet.bulletEnemy)
+        {
+            // Checa si la bala la disparo el enemigo
+            // para tomar la trayectoria de este
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                // En caso de que la bala colisione con el enemigo
+
+            }
+        }
     }
+}
+
+public enum TypeOfBullet
+{
+    bulletEnemy,
+    bulletPlayer
 }

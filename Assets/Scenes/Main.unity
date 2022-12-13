@@ -1037,6 +1037,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668133918}
   m_CullTransparentMesh: 1
+--- !u!1 &729660755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7377006436953276870, guid: 77753c2e67277784ab233331b6d05d97, type: 3}
+  m_PrefabInstance: {fileID: 1366370787}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &782638436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2721,6 +2726,10 @@ PrefabInstance:
       propertyPath: inGame
       value: 
       objectReference: {fileID: 563243680}
+    - target: {fileID: 1085025710121383884, guid: 39801033a48b0e44397a773b75fb4a8e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 729660755}
     - target: {fileID: 1085025710121383884, guid: 39801033a48b0e44397a773b75fb4a8e, type: 3}
       propertyPath: puntaje
       value: 

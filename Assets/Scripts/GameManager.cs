@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 0;
+        player.SetActive(false);
         startScreen.SetActive(true);
         gameOver.SetActive(false);
         inGame.SetActive(false);
@@ -105,6 +106,7 @@ public class GameManager : MonoBehaviour
                 inGame.SetActive(true);
                 pause.SetActive(false);
                 gameOver.SetActive(false);
+                player.SetActive(true);
                 break;
 
             case GameStates.pause:
