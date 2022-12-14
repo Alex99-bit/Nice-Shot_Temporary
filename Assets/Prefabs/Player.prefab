@@ -4836,7 +4836,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2535918198448768447}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9, y: 3, z: 0}
+  m_LocalPosition: {x: 1.01, y: 3.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4857,6 +4857,7 @@ GameObject:
   - component: {fileID: 1173929494006572013}
   - component: {fileID: 1173929494006572012}
   - component: {fileID: 1173929494006572014}
+  - component: {fileID: 1712111191}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5009,3 +5010,21 @@ MonoBehaviour:
   auxLife: 0
   auxBullets: 0
   auxTime: 0
+  target: {fileID: 1272242221105994201}
+--- !u!114 &1712111191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7377006436953276870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd98622ab0bddb74e8e8c97a69f65d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: 0
+  bulletPlayer: {fileID: 1399302142248258087, guid: b803413e0bf30c84794448ceb93b7518, type: 3}
+  bulletEnemy: {fileID: 3134034500748714983, guid: ff3589b67b40670438955ef2e9af6d0a, type: 3}
+  spawnBala: {fileID: 436577257722547772}
+  force: 0

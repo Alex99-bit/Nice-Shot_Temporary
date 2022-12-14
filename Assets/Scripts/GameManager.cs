@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 // pausa
-                currentGameState = GameStates.pause;
+                SetNewGameState(GameStates.pause);
             }
 
             timer = (timer + Time.deltaTime);
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 // Reanuda
-                currentGameState = GameStates.inGame;
+                SetNewGameState(GameStates.inGame);
             }
         }
 
@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
             case GameStates.pause:
                 Time.timeScale = 0;
                 startScreen.SetActive(false);
-                inGame.SetActive(false);
+                inGame.SetActive(true);
                 pause.SetActive(true);
                 gameOver.SetActive(false);
                 break;

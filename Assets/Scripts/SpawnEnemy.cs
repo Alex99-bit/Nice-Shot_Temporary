@@ -27,7 +27,7 @@ public class SpawnEnemy : MonoBehaviour
         }
         else if(spawnType == TypeOf.typeB)
         {
-            seg = 6;
+            seg = 8.5f;
         }
 
         if (speed == 0)
