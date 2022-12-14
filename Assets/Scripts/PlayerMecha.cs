@@ -63,7 +63,12 @@ public class PlayerMecha : MonoBehaviour
         {
             Movement();
             Apunta();
-            Dispara();
+
+            if(bullets > 0)
+                Dispara();
+
+            if(bullets > 6)
+                bullets = 6;
 
             // En caso de que la vida quede en cero, pasa lo que tiene que pasar x_x
             if (life <= 0)

@@ -53,7 +53,7 @@ public class Disparo : MonoBehaviour
         Rigidbody2D rb = bala.GetComponent<Rigidbody2D>();
         rb.AddForce(spawnBala.up * force, ForceMode2D.Impulse);
         PlayerMecha.instance.bullets--;
-        Destroy(bulletPlayer, 2.5f);
+        //Destroy(bulletPlayer, 2.5f);
     }
 
     void EnemyShoot()
@@ -61,7 +61,7 @@ public class Disparo : MonoBehaviour
         GameObject bala = Instantiate(bulletPlayer, spawnBala.position, spawnBala.rotation);
         Rigidbody2D rb = bala.GetComponent<Rigidbody2D>();
         rb.AddForce(spawnBala.up * force, ForceMode2D.Impulse);
-        Destroy(bulletPlayer, 2.5f);
+        //Destroy(bulletPlayer, 2.5f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
