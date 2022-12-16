@@ -15,7 +15,7 @@ public class SpawnEnemy : MonoBehaviour
     Rigidbody2D rigidSpawn;
     bool cambioLado;
     public float speed;
-    [SerializeField] private int i;
+    [SerializeField] private int i; // Nos sirve para contar cuantos enemigos se 
 
     // Start is called before the first frame update
     void Start()
