@@ -8,6 +8,7 @@ public class EnemyMecha : MonoBehaviour
 
     Rigidbody2D enemyRB;
     Animator animator;
+    Transform enemyTransform;
     int rand;
     float auxTime;
 
@@ -16,6 +17,7 @@ public class EnemyMecha : MonoBehaviour
     {
         enemyRB = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        enemyTransform = GetComponent<Transform>();
         auxTime = 0;
         rand = 0;
     }
@@ -29,6 +31,9 @@ public class EnemyMecha : MonoBehaviour
             if(auxTime >= 2.7f)
             {
                 auxTime = 0;
+
+                // Hay que probar con varios valores, podrian ser incluso angulos
+                rand = Random.Range(0, 360);
 
             }
         }

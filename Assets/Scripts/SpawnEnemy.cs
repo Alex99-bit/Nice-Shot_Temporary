@@ -15,12 +15,12 @@ public class SpawnEnemy : MonoBehaviour
     Rigidbody2D rigidSpawn;
     bool cambioLado;
     public float speed;
-    [SerializeField] private int i; // Nos sirve para contar cuantos enemigos se 
+    [SerializeField] private int i; // Nos sirve para contar cuantos enemigos se generan
 
     // Start is called before the first frame update
     void Start()
     {
-        //i = 0;
+        i = 0;
         rigidSpawn = GetComponent<Rigidbody2D>();
         cambioLado = false;
         StartCoroutine(spawnEnemys());
@@ -80,6 +80,7 @@ public class SpawnEnemy : MonoBehaviour
 
             if (GameManager.sharedInstance.currentGameState == GameStates.inGame && auxTime <= 10)
             {
+                i++;
                 Instantiate(enemy, this.transform);
             }
         }
