@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
+    
     public GameObject enemy;
     public float seg;
-    public TypeOf spawnType;
-    public Side side;
+    static float auxTime;
+
+    [SerializeField] private TypeOf spawnType;
+    [SerializeField] private Side side;
+
     Rigidbody2D rigidSpawn;
     bool cambioLado;
     public float speed;
-    //int i;
+    [SerializeField] private int i;
 
     // Start is called before the first frame update
     void Start()
@@ -24,16 +28,15 @@ public class SpawnEnemy : MonoBehaviour
         if(spawnType == TypeOf.typeA)
         {
             seg = 4;
+            speed = 5;
         }
         else if(spawnType == TypeOf.typeB)
         {
-            seg = 8.5f;
+            seg = 8.6f;
+            speed = 8;
         }
 
-        if (speed == 0)
-        {
-            speed = 5;
-        }
+        auxTime = 0;
     }
 
     // Update is called once per frame
@@ -64,6 +67,8 @@ public class SpawnEnemy : MonoBehaviour
                     rigidSpawn.velocity = new Vector2(1, 0) * speed;
                 }
             }
+
+            Wait();
         }
     }
 
@@ -73,10 +78,19 @@ public class SpawnEnemy : MonoBehaviour
         {
             yield return new WaitForSeconds(seg);
 
-            if (GameManager.sharedInstance.currentGameState == GameStates.inGame)
+            if (GameManager.sharedInstance.currentGameState == GameStates.inGame && auxTime <= 10)
             {
                 Instantiate(enemy, this.transform);
             }
+        }
+    }
+
+    void Wait()
+    {
+        auxTime += Time.deltaTime;
+        if (auxTime >= 17)
+        {
+            auxTime = 0;
         }
     }
 

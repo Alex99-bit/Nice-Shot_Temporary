@@ -10,7 +10,10 @@ public class PlayerMecha : MonoBehaviour
     public float speed, auxSpeed; 
     public int life, bullets, auxLife, auxBullets;
     public float auxTime;
-    const string IS_RUNNING = "isRunning", IS_FIRE = "isFire";
+    const string IS_RUNNING = "isRunning"/*, IS_FIRE = "isFire"*/;
+
+    [SerializeField]
+    private bool canShoot;
 
     public Transform target;
 
@@ -26,6 +29,8 @@ public class PlayerMecha : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody2D>();
+
+        canShoot = true;
 
         if(target == null)
         {
@@ -62,13 +67,21 @@ public class PlayerMecha : MonoBehaviour
         if(GameManager.sharedInstance.currentGameState == GameStates.inGame)
         {
             Movement();
-            Apunta();
 
             if(bullets > 0)
-                Dispara();
+            {
+                if(bullets >= 6)
+                {
+                    bullets = 6;
+                }
+                canShoot = true;
+            }
 
-            if(bullets > 6)
-                bullets = 6;
+            if (bullets <= 0)
+            {
+                bullets = 0;
+                canShoot = false;
+            }
 
             // En caso de que la vida quede en cero, pasa lo que tiene que pasar x_x
             if (life <= 0)
@@ -108,21 +121,6 @@ public class PlayerMecha : MonoBehaviour
         }
     }
 
-    void Apunta()
-    {
-        // Apunta hacia donde este el cursor del mouse
-
-    }
-
-    void Dispara()
-    {
-        // Dispara y crea la animacion
-        if (Input.GetButtonDown("Fire1"))
-        {
-            //playerAnim = AnimaPlayer.fire;
-        }
-    }
-
     void Dead()
     {
         
@@ -133,5 +131,10 @@ public class PlayerMecha : MonoBehaviour
         {
             GameManager.sharedInstance.currentGameState = GameStates.gameOver;
         }
+    }
+
+    public bool GetCanShoot()
+    {
+        return canShoot;
     }
 }

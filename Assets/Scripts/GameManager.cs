@@ -63,7 +63,43 @@ public class GameManager : MonoBehaviour
 
         vida.text = "Life: " + PlayerMecha.instance.life;
         puntaje.text = "$" + score;
-        balas.text = "Ammo: " + PlayerMecha.instance.bullets;
+        //balas.text = "Ammo: " + PlayerMecha.instance.bullets;
+
+        switch (PlayerMecha.instance.bullets)
+        {
+            case 0:
+                balas.text = "Ammo: ZERO";
+                break;
+
+            case 1:
+                balas.text = "Ammo: |";
+                break;
+
+            case 2:
+                balas.text = "Ammo: ||";
+                break;
+
+            case 3:
+                balas.text = "Ammo: |||";
+                break;
+
+            case 4:
+                balas.text = "Ammo: ||||";
+                break;
+
+            case 5:
+                balas.text = "Ammo: |||||";
+                break;
+
+            case 6:
+                balas.text = "Ammo: ||||||";
+                break;
+
+            default:
+                balas.text = "Ammo: Error";
+                break;
+        }
+
         timeWatch.text = "Timer: " + timer.ToString("F0");
     }
 

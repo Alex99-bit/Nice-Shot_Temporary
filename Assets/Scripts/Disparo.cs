@@ -26,7 +26,7 @@ public class Disparo : MonoBehaviour
         {
             if(character == TypeOfCharacter.player)
             {
-                if (Input.GetButtonDown("Fire1"))
+                if (Input.GetButtonDown("Fire1") && PlayerMecha.instance.GetCanShoot())
                 {
                     // El player dispara
                     PlayerShoot();
@@ -49,15 +49,22 @@ public class Disparo : MonoBehaviour
 
     void PlayerShoot()
     {
+        // Logica de disparo del player
+
+        // Crea un objeto basado en un prefab, añadiendo ciertos atributos
         GameObject bala = Instantiate(bulletPlayer, spawnBala.position, spawnBala.rotation);
         Rigidbody2D rb = bala.GetComponent<Rigidbody2D>();
         rb.AddForce(spawnBala.up * force, ForceMode2D.Impulse);
+
+        // Se restan la cantidad de balas en el player
         PlayerMecha.instance.bullets--;
         //Destroy(bulletPlayer, 2.5f);
     }
 
     void EnemyShoot()
     {
+        // Logica de disparo del enemigo
+
         GameObject bala = Instantiate(bulletPlayer, spawnBala.position, spawnBala.rotation);
         Rigidbody2D rb = bala.GetComponent<Rigidbody2D>();
         rb.AddForce(spawnBala.up * force, ForceMode2D.Impulse);
@@ -70,6 +77,7 @@ public class Disparo : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("BulletEnemy"))
             {
+                // Lo que pasa si un enemigo le da al player
                 PlayerMecha.instance.life--;
                 Destroy(collision.gameObject);
             }
@@ -80,7 +88,9 @@ public class Disparo : MonoBehaviour
             {
                 if (collision.gameObject.CompareTag("BulletPlayer"))
                 {
+                    // Lo que pasa si el player le da a un enemigo
                     GameManager.sharedInstance.score += 5;
+                    PlayerMecha.instance.bullets++;
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
                 }
