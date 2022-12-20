@@ -9,6 +9,7 @@ public class Disparo : MonoBehaviour
     public GameObject bulletPlayer;
     public Transform spawnBala;
     public float force;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -91,6 +92,7 @@ public class Disparo : MonoBehaviour
                     // Lo que pasa si el player le da a un enemigo
                     GameManager.sharedInstance.score += 5;
                     PlayerMecha.instance.bullets++;
+                    GameManager.sharedInstance.tangos++;
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
                 }

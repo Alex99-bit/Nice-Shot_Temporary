@@ -12,10 +12,15 @@ public class GameManager : MonoBehaviour
     public int score;
     // El timer puede usarse como temporizador o cronometro, falta definir
     public float timer;
+    public int tangos;
 
     // Estos elementos son los que se mostraran en la interfaz
     public TextMeshProUGUI vida, puntaje, balas, timeWatch;
     public GameObject startScreen, gameOver, inGame, pause, player;
+
+    //Esto es para las rondas de enemigos
+    [SerializeField]
+    private int numberOfRounds;
 
     private void Awake()
     {
@@ -29,6 +34,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 0;
+        tangos = 0;
         player.SetActive(false);
         startScreen.SetActive(true);
         gameOver.SetActive(false);
@@ -100,7 +106,8 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        timeWatch.text = "Timer: " + timer.ToString("F0");
+        timeWatch.text = "Timer: " + timer.ToString("F0")/* + " / Round: " + numberOfRounds */;
+
     }
 
     public void SetMainMenu()
@@ -168,6 +175,16 @@ public class GameManager : MonoBehaviour
         }
 
         currentGameState = newGameState;
+    }
+
+    public int GetNumberOfRound()
+    {
+        return numberOfRounds;
+    }
+
+    public void SetNumberOfRound(int newNumber)
+    {
+        this.numberOfRounds = newNumber;
     }
 }
 

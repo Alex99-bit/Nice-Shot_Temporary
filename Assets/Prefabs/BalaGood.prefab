@@ -96,7 +96,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1399302142248258087}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f2b5e987b198b2249bbca5c7d9b0a8f2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -117,7 +117,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -136,3 +136,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47c1ac653498f04eae51e77112f17a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroySeg: 0

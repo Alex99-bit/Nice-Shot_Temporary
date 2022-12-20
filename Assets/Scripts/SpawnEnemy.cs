@@ -7,7 +7,6 @@ public class SpawnEnemy : MonoBehaviour
     
     public GameObject enemy;
     public float seg;
-    static float auxTime;
 
     [SerializeField] private TypeOf spawnType;
     [SerializeField] private Side side;
@@ -15,12 +14,19 @@ public class SpawnEnemy : MonoBehaviour
     Rigidbody2D rigidSpawn;
     bool cambioLado;
     public float speed;
-    [SerializeField] private int i; // Nos sirve para contar cuantos enemigos se generan
+
+    [SerializeField]
+    float holdDown;
+    [SerializeField]
+    bool roundActive;
+    static int i;
 
     // Start is called before the first frame update
     void Start()
     {
         i = 0;
+        GameManager.sharedInstance.SetNumberOfRound(1);
+        roundActive = true;
         rigidSpawn = GetComponent<Rigidbody2D>();
         cambioLado = false;
         StartCoroutine(spawnEnemys());
@@ -32,11 +38,10 @@ public class SpawnEnemy : MonoBehaviour
         }
         else if(spawnType == TypeOf.typeB)
         {
-            seg = 8.6f;
+            seg = 4f;
             speed = 8;
         }
 
-        auxTime = 0;
     }
 
     // Update is called once per frame
@@ -68,7 +73,7 @@ public class SpawnEnemy : MonoBehaviour
                 }
             }
 
-            Wait();
+            SetNewRound();
         }
     }
 
@@ -78,20 +83,39 @@ public class SpawnEnemy : MonoBehaviour
         {
             yield return new WaitForSeconds(seg);
 
-            if (GameManager.sharedInstance.currentGameState == GameStates.inGame && auxTime <= 10)
+            if (GameManager.sharedInstance.currentGameState == GameStates.inGame && roundActive)
             {
-                i++;
                 Instantiate(enemy, this.transform);
+                roundActive = false;
+                i++;
             }
         }
     }
 
-    void Wait()
+    void SetNewRound()
     {
-        auxTime += Time.deltaTime;
-        if (auxTime >= 17)
+        Debug.Log("Ronda: " + GameManager.sharedInstance.GetNumberOfRound());
+        Debug.Log("Ronda activa: " + roundActive);
+        Debug.Log("Cuantas veces " + i);
+        if (!roundActive)
         {
-            auxTime = 0;
+            if (GameManager.sharedInstance.tangos == 6)
+            {
+                // Espera unos segundos antes de activar la siguiente ronda
+                holdDown += Time.deltaTime;
+                if (holdDown >= 3)
+                {
+                    holdDown = 0;
+                    GameManager.sharedInstance.tangos = 0;
+                    GameManager.sharedInstance.SetNumberOfRound((GameManager.sharedInstance.GetNumberOfRound() + 1));
+                    roundActive = true;
+                }
+                Debug.Log("Todos abatidos, espera : " + holdDown + " seg");
+            }
+        }
+        else
+        {
+            holdDown = 0;
         }
     }
 

@@ -9,7 +9,7 @@ public class PlayerMecha : MonoBehaviour
     Animator animator;
     public float speed, auxSpeed; 
     public int life, bullets, auxLife, auxBullets;
-    public float auxTime;
+    public float auxTime, holdDown;
     const string IS_RUNNING = "isRunning"/*, IS_FIRE = "isFire"*/;
 
     [SerializeField]
@@ -55,6 +55,7 @@ public class PlayerMecha : MonoBehaviour
         //playerAnim = AnimaPlayer.idle;
 
         auxTime = 0;
+        holdDown = 0;
 
         auxLife = life;
         auxBullets = bullets;
@@ -81,6 +82,14 @@ public class PlayerMecha : MonoBehaviour
             {
                 bullets = 0;
                 canShoot = false;
+            }
+
+            // Hold down para recargar las balas
+            holdDown += Time.deltaTime;
+            if(holdDown >= 3.5f)
+            {
+                holdDown = 0;
+                bullets++;
             }
 
             // En caso de que la vida quede en cero, pasa lo que tiene que pasar x_x
@@ -126,7 +135,7 @@ public class PlayerMecha : MonoBehaviour
         
         //playerAnim = AnimaPlayer.dead;
 
-        auxTime = Time.deltaTime;
+        auxTime += Time.deltaTime;
         if (auxTime >= 10)
         {
             GameManager.sharedInstance.currentGameState = GameStates.gameOver;

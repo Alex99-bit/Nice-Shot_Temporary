@@ -4968,7 +4968,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -4984,7 +4984,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 7377006436953276870}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b59eb450f279f064eb414d2fb63d59fe, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -5010,6 +5010,8 @@ MonoBehaviour:
   auxLife: 0
   auxBullets: 0
   auxTime: 0
+  holdDown: 0
+  canShoot: 0
   target: {fileID: 1272242221105994201}
 --- !u!114 &1712111191
 MonoBehaviour:
@@ -5025,6 +5027,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 0
   bulletPlayer: {fileID: 1399302142248258087, guid: b803413e0bf30c84794448ceb93b7518, type: 3}
-  bulletEnemy: {fileID: 3134034500748714983, guid: ff3589b67b40670438955ef2e9af6d0a, type: 3}
   spawnBala: {fileID: 436577257722547772}
   force: 0
