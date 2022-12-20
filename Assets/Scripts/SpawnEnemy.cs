@@ -107,8 +107,8 @@ public class SpawnEnemy : MonoBehaviour
                 GameManager.sharedInstance.SetNumberOfRound((GameManager.sharedInstance.GetNumberOfRound() + 1));
                 roundActive = true;
                 GameManager.sharedInstance.tangos = 0;
+                Debug.Log("Todos abatidos, espera : " + holdDown + " seg");
             }
-            Debug.Log("Todos abatidos, espera : " + holdDown + " seg");
         }
         else
         {
