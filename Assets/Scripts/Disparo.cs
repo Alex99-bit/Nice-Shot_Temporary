@@ -93,6 +93,12 @@ public class Disparo : MonoBehaviour
                     GameManager.sharedInstance.score += 5;
                     PlayerMecha.instance.bullets++;
                     GameManager.sharedInstance.tangos++;
+
+                    if (GameManager.sharedInstance.tangos >= 6)
+                    {
+                        GameManager.sharedInstance.tangos = 6;
+                    }
+
                     Destroy(collision.gameObject);
                     Destroy(gameObject);
                 }

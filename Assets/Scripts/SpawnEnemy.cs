@@ -99,19 +99,16 @@ public class SpawnEnemy : MonoBehaviour
         Debug.Log("Cuantas veces " + i);
         if (!roundActive)
         {
-            if (GameManager.sharedInstance.tangos == 6)
+            // Espera unos segundos antes de activar la siguiente ronda
+            holdDown += Time.deltaTime;
+            if (holdDown >= 3 && GameManager.sharedInstance.tangos >= 6)
             {
-                // Espera unos segundos antes de activar la siguiente ronda
-                holdDown += Time.deltaTime;
-                if (holdDown >= 3)
-                {
-                    holdDown = 0;
-                    GameManager.sharedInstance.tangos = 0;
-                    GameManager.sharedInstance.SetNumberOfRound((GameManager.sharedInstance.GetNumberOfRound() + 1));
-                    roundActive = true;
-                }
-                Debug.Log("Todos abatidos, espera : " + holdDown + " seg");
+                holdDown = 0;
+                GameManager.sharedInstance.SetNumberOfRound((GameManager.sharedInstance.GetNumberOfRound() + 1));
+                roundActive = true;
+                GameManager.sharedInstance.tangos = 0;
             }
+            Debug.Log("Todos abatidos, espera : " + holdDown + " seg");
         }
         else
         {
